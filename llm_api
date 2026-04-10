@@ -1,0 +1,14 @@
+import requests
+API_KEY = "key"
+URL = "https://api.openai.com/v1/chat/completions"
+
+def chat(prompt)
+    headers = {'Authorization':f"Bearer{key}
+    data = {
+        "model":"gpt-4.0-turbo",
+        "message":[{"role":"user","content":prompt}]
+    resp = requerts.post(URL,json=data,headers=headers)
+    return resp.json()["choices"][0]["message"]["content"]
+
+if __name__ == "__main__":
+    print(chat("文案五要素“））
