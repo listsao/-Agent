@@ -1,0 +1,15 @@
+from fastapi import FastAPI,UploadFile
+import shutil
+
+app = FastAPI(title = "RAG知识库问答")
+
+@app.post("/upload")
+def upload_pdf(file:UploadFile):
+    with open(file.filename,"wb") as f:
+        shutil.copyfileobj(file.file,f)
+
+      return {"msg":上传完成，已加入知识库}
+
+@app.get("/ask")
+def ask(question:str):
+    return{"answer":f"根据知识库回答：{question}”}
