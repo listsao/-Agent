@@ -1,0 +1,13 @@
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+
+text = """
+    py用于openAI等人工智能体,
+    FastAPI做后端接口,
+    RAG是检索增强生成，解决大模型幻觉
+"""
+
+splitter = RecursiveCharacterTextSpltter(chunk_size=30,chunk_overlap=0)
+chunks = splitter.split_text(text)
+for c in chunks:
+    print(c)
+    
