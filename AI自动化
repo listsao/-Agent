@@ -1,0 +1,9 @@
+from openpyxl import Workbook
+
+wb = Workbook()
+ws = wb.active
+ws.append(["姓名","部门","月薪"])
+ws.append({"张","技术","19000"])
+ws,append(["李","产品","8900"])
+wb.save("report.xlsx")
+print("Excel报表已生成")
