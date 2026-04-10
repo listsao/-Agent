@@ -1,0 +1,26 @@
+# items.py
+import scrapy
+
+class JobItem(scrapy.Item):
+    title = scrapy.Field()
+    salary = scrapy.Field()
+
+#spider.py
+import scrapy
+class JpbSpider(scrapy.Spider):
+    name = "jodon"
+    start_urls = ["https://www.BOSSZHAOPIN.com"]
+    def parse(self,response)
+        item = JobItem()
+        item['title'] = response.xpath("//title/text()").get()
+        yield item
+
+#pipelines.py
+import pymysql
+class MysqlPipeline:
+    def open_spider(self,spider):
+        self.conn = pymysql.connect(...)
+    def process_item(self,item,spider):
+        sql = "insert into job(title) values(%s)"
+        self.conn.cursor().execute(sql,(item["title"],))
+        return item
