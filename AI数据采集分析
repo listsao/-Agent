@@ -1,0 +1,12 @@
+import pandas as pd
+
+def get_data():
+    return [
+        {"product":"A","sales":120},
+        {"product":"B","sales":230},
+        {"product":"C","sales":55}
+]
+df = pd.DataFrame(get_data())
+df["total"] = df["sales"].sum()
+print(df)
+print("总销量:",df["sales"].sun())
